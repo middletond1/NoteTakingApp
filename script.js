@@ -19,7 +19,21 @@ function createNote() {
     noteDiv.appendChild(dateAndTimeDiv);
     dateAndTimeDiv.appendChild(noteTextDiv);
     noteArea.appendChild(noteDiv);
+    noteArea.appendChild(createDeleteButton());
 };
+
+function createDeleteButton() {
+    const deleteButton = document.createElement('button');
+    deleteButton.classList = 'delete';
+    deleteButton.appendChild(document.createTextNode('delete'));
+    return deleteButton;
+}
+
+function deleteItem(element) {
+    if (element.target.classList.contains('delete')) {
+        element.target.parentElement.remove();
+    }
+}
 
 function removeText() {
     if (textInputArea.value != '') {
