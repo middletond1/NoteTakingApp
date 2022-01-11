@@ -13,8 +13,10 @@ function createNote() {
     noteDiv.classList.add('note')
     noteDiv.appendChild(document.createTextNode(inputText));
     noteArea.appendChild(noteDiv);
-}
+};
 
 function drawNote() {
 
-}
+};
+
+submitButton.addEventListener('click', createNote);
