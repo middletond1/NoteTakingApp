@@ -15,14 +15,28 @@ function createNote() {
     noteArea.appendChild(noteDiv);
 };
 
-function drawNote() {
+function removeText() {
+    if (textInputArea.value != '') {
+        textInputArea.value = '';
+    }
+}
 
+function checkForText() {
+    if (textInputArea.value === '') {
+        alert(`Please enter text.`)
+    }
+}
+
+function drawNote() {
+    checkForText()
+    createNote();
+    removeText();
 };
 
-submitButton.addEventListener('click', createNote);
+submitButton.addEventListener('click', drawNote);
 textInputArea.addEventListener('keydown', function(event) {
     if(event.keyCode === 13) {
         event.preventDefault();
-        createNote();
+        drawNote();
     }
 })
