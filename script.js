@@ -14,12 +14,11 @@ function createNote() {
     dateAndTimeDiv.classList.add('date-and-time');
     noteTextDiv.classList.add('note-text')
     dateAndTimeDiv.appendChild(document.createTextNode(dateAndTime));
-    // noteDiv.appendChild(document.createElement('br'));
     noteTextDiv.appendChild(document.createTextNode(inputText));
     noteDiv.appendChild(dateAndTimeDiv);
-    dateAndTimeDiv.appendChild(noteTextDiv);
+    noteDiv.appendChild(noteTextDiv);
+    noteDiv.appendChild(createDeleteButton());
     noteArea.appendChild(noteDiv);
-    noteArea.appendChild(createDeleteButton());
 };
 
 function createDeleteButton() {
@@ -160,4 +159,4 @@ textInputArea.addEventListener('keydown', function(event) {
         drawNote();
     }
 })
-document.getElementById('#note-area').addEventListener('click', deleteNote);
+document.getElementById('note-area').addEventListener('click', deleteNote);
