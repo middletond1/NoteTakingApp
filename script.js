@@ -5,16 +5,19 @@ const noteArea = document.getElementById('note-area');
 //Refactor this function
 function createNote() {
     const noteDiv = document.createElement('div');
-    const noteTextDiv = document.createElement('div');
-    const inputText = textInputArea.value;
     noteDiv.classList.add('note')
-    noteTextDiv.classList.add('note-text')
-    noteTextDiv.appendChild(document.createTextNode(inputText));
-    noteDiv.appendChild(createTimeTitleDiv());
-    noteDiv.appendChild(noteTextDiv);
+    noteDiv.appendChild(createTimeTitle());
+    noteDiv.appendChild(createNoteText());
     noteDiv.appendChild(createDeleteButton());
-    noteArea.appendChild(noteDiv);
+    return noteDiv;
 };
+
+function createNoteText() {
+    const noteTextDiv = document.createElement('div');
+    noteTextDiv.classList.add('note-text')
+    noteTextDiv.appendChild(document.createTextNode(textInputArea.value));
+    return noteTextDiv;
+}
 
 function createDeleteButton() {
     const deleteButton = document.createElement('button');
@@ -43,7 +46,7 @@ function checkForText() {
 
 //Start functions to get date and time.
 
-function createTimeTitleDiv() {
+function createTimeTitle() {
     getCurrentTime();
     const dateAndTimeDiv = document.createElement('div');
     dateAndTimeDiv.classList.add('date-and-time');
@@ -152,7 +155,7 @@ function year() {
 
 function drawNote() {
     checkForText()
-    createNote();
+    noteArea.appendChild(createNote());
     removeText();
 };
 
