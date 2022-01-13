@@ -2,20 +2,15 @@ const textInputArea = document.getElementById('text-input');
 const submitButton = document.getElementById('submit-button');
 const noteArea = document.getElementById('note-area');
 
-//refactored this function to make multiple divs for each section. consider refactoring.
+//Refactor this function
 function createNote() {
-    getCurrentTime();
     const noteDiv = document.createElement('div');
-    const dateAndTimeDiv = document.createElement('div');
     const noteTextDiv = document.createElement('div');
-    const dateAndTime = `${month()} ${date()} ${year()} @ ${hours()}:${minutes()}:${seconds()}`;
     const inputText = textInputArea.value;
     noteDiv.classList.add('note')
-    dateAndTimeDiv.classList.add('date-and-time');
     noteTextDiv.classList.add('note-text')
-    dateAndTimeDiv.appendChild(document.createTextNode(dateAndTime));
     noteTextDiv.appendChild(document.createTextNode(inputText));
-    noteDiv.appendChild(dateAndTimeDiv);
+    noteDiv.appendChild(createTimeTitleDiv());
     noteDiv.appendChild(noteTextDiv);
     noteDiv.appendChild(createDeleteButton());
     noteArea.appendChild(noteDiv);
@@ -47,6 +42,15 @@ function checkForText() {
 }
 
 //Start functions to get date and time.
+
+function createTimeTitleDiv() {
+    getCurrentTime();
+    const dateAndTimeDiv = document.createElement('div');
+    dateAndTimeDiv.classList.add('date-and-time');
+    dateAndTimeDiv.appendChild(document.createTextNode(`${month()} ${date()} ${year()} @ ${hours()}:${minutes()}:${seconds()}`));
+    return dateAndTimeDiv;
+}
+
 function getCurrentTime() {
     const date = new Date();
     return date;
