@@ -2,7 +2,6 @@ const textInputArea = document.getElementById('text-input');
 const submitButton = document.getElementById('submit-button');
 const noteArea = document.getElementById('note-area');
 
-//Refactor this function
 function createNote() {
     const noteDiv = document.createElement('div');
     noteDiv.classList.add('note')
