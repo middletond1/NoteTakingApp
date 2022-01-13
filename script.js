@@ -31,7 +31,7 @@ function createDeleteButton() {
 
 function deleteItem(element) {
     if (element.target.classList.contains('delete')) {
-        element.target.parentElement.remove();
+        element.target.closest('.note').remove();
     }
 }
 
