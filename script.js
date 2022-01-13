@@ -29,7 +29,7 @@ function createDeleteButton() {
     return deleteButton;
 }
 
-function deleteItem(element) {
+function deleteNote(element) {
     if (element.target.classList.contains('delete')) {
         element.target.closest('.note').remove();
     }
@@ -160,3 +160,4 @@ textInputArea.addEventListener('keydown', function(event) {
         drawNote();
     }
 })
+document.getElementById('#note-area').addEventListener('click', deleteNote);
