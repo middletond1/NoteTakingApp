@@ -1,3 +1,14 @@
 body {
     background-color: gray;
 }
+
+#note-area {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.note {
+    
+}
