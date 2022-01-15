@@ -2,11 +2,19 @@ body {
     background-color: gray;
 }
 
+#input-area {
+    margin-top: 100px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
 #note-area {
+    margin: auto;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(2, auto);
+    max-width: 60%;
 }
 
 .note {
