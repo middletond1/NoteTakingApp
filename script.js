@@ -40,6 +40,7 @@ function removeText() {
 function checkForText() {
     if (textInputArea.value === '') {
         alert(`Please enter text.`)
+        return;
     }
 }
 
@@ -153,7 +154,10 @@ function year() {
 //End functions to get date and time.
 
 function drawNote() {
-    checkForText()
+    if (textInputArea.value === '') {
+        alert(`Please enter text.`)
+        return;
+    }
     noteArea.appendChild(createNote());
     removeText();
 };

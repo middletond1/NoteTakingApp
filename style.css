@@ -14,14 +14,25 @@ body {
     grid-auto-flow: row;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, auto);
-    grid-gap: 6px;
+    grid-gap: 15px;
     max-width: 60%;
 }
 
 .note {
-    background-color: green;
+    border-style: solid;
+    border-radius: 10px;
+    border: 1px, black;
+    background-color: peachpuff;
 }
 
 .note-text {
-    word-break:break-all
+    word-break: break-all;
+    text-align: center;
+    margin: 5px;
+}
+
+.date-and-time {
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
 }
