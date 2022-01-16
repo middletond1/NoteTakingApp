@@ -37,13 +37,6 @@ function removeText() {
     }
 }
 
-function checkForText() {
-    if (textInputArea.value === '') {
-        alert(`Please enter text.`)
-        return;
-    }
-}
-
 //Start functions to get date and time.
 
 function createTimeTitle() {

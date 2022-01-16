@@ -36,3 +36,8 @@ body {
     text-align: center;
     margin: 5px;
 }
+
+.delete {
+    background-image: url('../Images/trash.svg');
+    background-size: cover;
+}
