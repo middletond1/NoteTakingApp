@@ -33,12 +33,14 @@ body {
 }
 
 .note-text {
+    font-size: 20px;
     word-break: break-all;
     text-align: center;
-    margin: 5px;
+    margin: 15px;
 }
 
 .date-and-time {
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     margin: 5px;

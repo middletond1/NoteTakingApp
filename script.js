@@ -50,7 +50,7 @@ function createTimeTitle() {
     getCurrentTime();
     const dateAndTimeDiv = document.createElement('div');
     dateAndTimeDiv.classList.add('date-and-time');
-    dateAndTimeDiv.appendChild(document.createTextNode(`${month()} ${date()} ${year()} @ ${hours()}:${minutes()}:${seconds()}`));
+    dateAndTimeDiv.appendChild(document.createTextNode(`${month()} ${date()} ${year()} ${hours()}:${minutes()}:${seconds()}`));
     return dateAndTimeDiv;
 }
 
