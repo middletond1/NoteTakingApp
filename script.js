@@ -7,6 +7,7 @@ function createNote() {
     noteDiv.classList.add('note')
     noteDiv.appendChild(createTimeTitle());
     noteDiv.appendChild(createNoteText());
+    noteDiv.appendChild(createBufferSection());
     noteDiv.appendChild(createDeleteButton());
     return noteDiv;
 };
@@ -18,10 +19,16 @@ function createNoteText() {
     return noteTextDiv;
 }
 
+//following function solves delete button overlapping text due to absolute positioning
+function createBufferSection() {
+    const bufferSection = document.createElement('div');
+    bufferSection.classList.add('buffer-section');
+    return bufferSection;
+}
+
 function createDeleteButton() {
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
-    deleteButton.appendChild(document.createTextNode('delete'));
     return deleteButton;
 }
 
