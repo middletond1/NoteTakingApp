@@ -71,12 +71,8 @@ function wrapDeleteButton(deleteBtn) {
 function createDeleteButton() {
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
-    deleteButton.onclick = deleteNote;
+    deleteButton.onclick = () => element.target.closest('.note').remove();;
     return wrapDeleteButton(deleteButton);
-}
-
-function deleteNote(element) {
-        element.target.closest('.note').remove();
 }
 
 //Start functions to get date and time.
