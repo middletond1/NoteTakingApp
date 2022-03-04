@@ -1,10 +1,37 @@
-// function initializeNoteApp() {
+initializeNoteApp()
 
-// }
+function initializeNoteApp() {
+    const textInputArea = document.getElementById('text-input');
+    const submitButton = document.getElementById('submit-button');
+    submitButton.addEventListener('click', drawNote);
+    textInputArea.addEventListener('keydown', function(event) {
+        if(event.code === 'enter') {
+            event.preventDefault();
+            drawNote();
+            removeText();
+        }
+    })
+}
 
-const textInputArea = document.getElementById('text-input');
-const submitButton = document.getElementById('submit-button');
-const noteArea = document.getElementById('note-area');
+function getTextInput() {
+    return document.getElementById('text-input').value;
+}
+
+function setTextInput() {
+    document.getElementById('text-input').value = '';
+}
+
+function drawNote() {
+    const noteArea = document.getElementById('note-area');
+    if (getTextInput() === '') {
+        alert(`Please enter text.`)
+        return;
+    }
+    noteArea.appendChild(createNote());
+};
+
+
+
 
 function createNote() {
     const noteDiv = document.createElement('div');
@@ -19,7 +46,7 @@ function createNote() {
 function createNoteText() {
     const noteTextDiv = document.createElement('div');
     noteTextDiv.classList.add('note-text')
-    noteTextDiv.appendChild(document.createTextNode(textInputArea.value));
+    noteTextDiv.appendChild(document.createTextNode(getTextInput()));
     return noteTextDiv;
 }
 
@@ -43,8 +70,8 @@ function deleteNote(element) {
 }
 
 function removeText() {
-    if (textInputArea.value != '') {
-        textInputArea.value = '';
+    if (getTextInput != '') {
+        setTextInput();
     }
 }
 
@@ -116,20 +143,4 @@ function getYear() {
 }
 //End functions to get date and time.
 
-function drawNote() {
-    if (textInputArea.value === '') {
-        alert(`Please enter text.`)
-        return;
-    }
-    noteArea.appendChild(createNote());
-    removeText();
-};
-
-submitButton.addEventListener('click', drawNote);
-textInputArea.addEventListener('keydown', function(event) {
-    if(event.keyCode === 13) {
-        event.preventDefault();
-        drawNote();
-    }
-})
 document.getElementById('note-area').addEventListener('click', deleteNote);
