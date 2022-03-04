@@ -69,6 +69,7 @@ body {
 }
 
 .note-text {
+    order: 1;
     flex: 999999;
     font-size: 20px;
     word-break: break-all;
@@ -77,6 +78,7 @@ body {
 }
 
 .date-and-time {
+    order: 0;
     flex: 1;
     font-size: 25px;
     font-weight: bold;
@@ -98,5 +100,6 @@ body {
 }
 
 .deleteBtnWrapper {
+    order: 3;
     flex: 1;
 }

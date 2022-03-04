@@ -41,10 +41,13 @@ function appendNoteToDom() {
 
 function createNote() {
     const noteDiv = document.createElement('div');
-    noteDiv.classList.add('note')
-    noteDiv.appendChild(createTimeTitle());
-    noteDiv.appendChild(createNoteText());
-    noteDiv.appendChild(createDeleteButton());
+    noteDiv.classList.add('note');
+    const notePieces = [
+        createTimeTitle(),
+        createNoteText(),
+        createDeleteButton()
+    ]
+    noteDiv.append(...notePieces);
     return noteDiv;
 };
 
