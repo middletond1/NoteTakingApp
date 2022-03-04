@@ -3,11 +3,11 @@ initializeNoteApp()
 function initializeNoteApp() {
     const textInputArea = document.getElementById('text-input');
     const submitButton = document.getElementById('submit-button');
-    submitButton.addEventListener('click', drawNote);
+    submitButton.addEventListener('click', appendNote);
     textInputArea.addEventListener('keydown', function(event) {
         if(event.code === 'enter') {
             event.preventDefault();
-            drawNote();
+            appendNote();
             removeText();
         }
     })
@@ -21,7 +21,7 @@ function setTextInput() {
     document.getElementById('text-input').value = '';
 }
 
-function drawNote() {
+function appendNote() {
     const noteArea = document.getElementById('note-area');
     if (getTextInput() === '') {
         alert(`Please enter text.`)
@@ -38,7 +38,6 @@ function createNote() {
     noteDiv.classList.add('note')
     noteDiv.appendChild(createTimeTitle());
     noteDiv.appendChild(createNoteText());
-    noteDiv.appendChild(createBufferSection());
     noteDiv.appendChild(createDeleteButton());
     return noteDiv;
 };
@@ -50,17 +49,13 @@ function createNoteText() {
     return noteTextDiv;
 }
 
-//following function solves delete button overlapping text due to absolute positioning
-function createBufferSection() {
-    const bufferSection = document.createElement('div');
-    bufferSection.classList.add('buffer-section');
-    return bufferSection;
-}
-
 function createDeleteButton() {
+    const deleteBtnWrapper = document.createElement('div');
+    deleteBtnWrapper.classList = 'deleteBtnWrapper';
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
-    return deleteButton;
+    deleteBtnWrapper.appendChild(deleteButton)
+    return deleteBtnWrapper;
 }
 
 function deleteNote(element) {

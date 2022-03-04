@@ -69,6 +69,7 @@ body {
 }
 
 .note-text {
+    flex: 999999;
     font-size: 20px;
     word-break: break-all;
     text-align: center;
@@ -76,6 +77,7 @@ body {
 }
 
 .date-and-time {
+    flex: 1;
     font-size: 25px;
     font-weight: bold;
     text-align: center;
@@ -89,15 +91,12 @@ body {
     width: 26.25px;
     height: 30px;
     transition: all .5s;
-    position: absolute;
-    right: 0;
-    bottom: 0;
 }
 
 .delete:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.buffer-section {
-    height: 35px;
+.deleteBtnWrapper {
+    flex: 1;
 }
