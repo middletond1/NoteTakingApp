@@ -42,14 +42,17 @@ function appendNoteToDom() {
 function createNote() {
     const noteDiv = document.createElement('div');
     noteDiv.classList.add('note');
-    const notePieces = [
+    noteDiv.append(...createNotePieces());
+    return noteDiv;
+};
+
+function createNotePieces() {
+    return [
         createTimeTitle(),
         createNoteText(),
         createDeleteButton()
-    ]
-    noteDiv.append(...notePieces);
-    return noteDiv;
-};
+    ];
+}
 
 function createNoteText() {
     const noteTextDiv = document.createElement('div');
@@ -58,14 +61,18 @@ function createNoteText() {
     return noteTextDiv;
 }
 
-function createDeleteButton() {
+function wrapDeleteButton(deleteBtn) {
     const deleteBtnWrapper = document.createElement('div');
     deleteBtnWrapper.classList = 'deleteBtnWrapper';
+    deleteBtnWrapper.appendChild(deleteBtn)
+    return deleteBtnWrapper;
+}
+
+function createDeleteButton() {
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
     deleteButton.onclick = deleteNote;
-    deleteBtnWrapper.appendChild(deleteButton)
-    return deleteBtnWrapper;
+    return wrapDeleteButton(deleteButton);
 }
 
 function deleteNote(element) {
