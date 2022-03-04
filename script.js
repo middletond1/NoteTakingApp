@@ -1,3 +1,7 @@
+// function initializeNoteApp() {
+
+// }
+
 const textInputArea = document.getElementById('text-input');
 const submitButton = document.getElementById('submit-button');
 const noteArea = document.getElementById('note-area');
@@ -47,108 +51,67 @@ function removeText() {
 //Start functions to get date and time.
 
 function createTimeTitle() {
-    getCurrentTime();
+    getDateObject();
     const dateAndTimeDiv = document.createElement('div');
     dateAndTimeDiv.classList.add('date-and-time');
-    dateAndTimeDiv.appendChild(document.createTextNode(`${month()} ${date()} ${year()} ${hours()}:${minutes()}:${seconds()}`));
+    dateAndTimeDiv.appendChild(document.createTextNode(`${getMonth()} ${getDate()} ${getYear()} ${getHours()}:${getMinutes()}:${getSeconds()}`));
     return dateAndTimeDiv;
 }
 
-function getCurrentTime() {
+function getDateObject() {
     const date = new Date();
     return date;
 }
 
-function hours() {
-    let hours = getCurrentTime().getHours();
-    switch (hours) {
-        case 0:
-            hours = '12';
-            break;
-        case 13:
-            hours = "1";
-            break;
-        case 14: 
-            hours = '2';
-            break;
-        case 15:
-            hours = '3';
-            break;
-        case 16:
-            hours = '4';
-            break;
-        case 17:
-            hours = '5';
-            break;
-        case 18:
-            hours = '6';
-            break;
-        case 19:
-            hours = '7';
-            break;
-        case 20:
-            hours = '8';
-            break;
-        case 21:
-            hours = '9';
-            break;
-        case 22:
-            hours = '10';
-            break;
-        case 23:
-            hours = '11';
-            break;
-        case 24:
-            hours = '12';
-            break;
-    };
-    hours = hours.toString().padStart(2, '0');
-    return hours;
-}
-
-function minutes() {
-    let minutes = getCurrentTime().getMinutes();
-    minutes = minutes.toString().padStart(2, '0');
-    return minutes;
-}
-
-function seconds() {
-    let seconds = getCurrentTime().getSeconds();
-    seconds = seconds.toString().padStart(2, '0');
-    return seconds;
-}
-
-function day() {
-    let day = getCurrentTime().getDay();
-    const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    day = weekday[day];
-    return day;
-}
-
-function month() {
-    let month = getCurrentTime().getMonth();
-    const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',];
-    month = calendarMonth[month];
-    return month;
-}
-
-function date() {
-    let date = getCurrentTime().getDate();
-    date = date.toString();
-    if (date.charAt(date.length - 1) === '1') {
-        date = date + 'st';
-    } else if (date.charAt(date.length - 1) === '2') {
-        date = date + 'nd';
-    } else if (date.charAt(date.length - 1) === '3') {
-        date = date + 'rd';
-    } else {
-        date = date + 'th';
+function getHours() {
+    let hours = getDateObject().getHours();
+    if (hours > 12) {
+        hours = hours - 12
+    } else if (hours === 0){
+        hours = 12
     }
-    return date;
+    return hours.toString().padStart(2, '0');;
 }
 
-function year() {
-    let year = getCurrentTime().getFullYear();
+function getMinutes() {
+    let minutes = getDateObject().getMinutes();
+    return minutes.toString().padStart(2, '0');;
+}
+
+function getSeconds() {
+    let seconds = getDateObject().getSeconds();
+    return seconds.toString().padStart(2, '0');
+}
+
+function getDay() {
+    let day = getDateObject().getDay();
+    const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return weekday[day];
+}
+
+function getMonth() {
+    let month = getDateObject().getMonth();
+    const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',];
+    return calendarMonth[month];
+}
+
+function getDate() {
+    let date = getDateObject().getDate().toString();
+    const dateOnesPlace = date.charAt(date.length - 1)
+    if (dateOnesPlace === '1') {
+        return `${date}st`
+    }
+    if (dateOnesPlace === '2') {
+        return `${date}nd`
+    }
+    if (dateOnesPlace === '3') {
+        return `${date}rd`
+    }
+        return `${date}th`
+}
+
+function getYear() {
+    let year = getDateObject().getFullYear();
     return year;
 }
 //End functions to get date and time.
