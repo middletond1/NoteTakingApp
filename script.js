@@ -8,10 +8,9 @@ function initializeNoteApp() {
 function initTextInputField() {
     const textInputArea = document.getElementById('text-input');
     textInputArea.addEventListener('keydown', function(event) {
-        if(event.code === 'enter') {
+        if(event.code === 'Enter') {
             event.preventDefault();
             appendNoteToDom();
-            removeText();
         }
     })
 }
@@ -26,8 +25,8 @@ function getTextInput() {
     return document.getElementById('text-input').value;
 }
 
-function setTextInput() {
-    document.getElementById('text-input').value = '';
+function setTextInput(val) {
+    document.getElementById('text-input').value = val;
 }
 
 function appendNoteToDom() {
@@ -37,10 +36,8 @@ function appendNoteToDom() {
         return;
     }
     noteArea.appendChild(createNote());
+    setTextInput('');
 };
-
-
-
 
 function createNote() {
     const noteDiv = document.createElement('div');
@@ -63,20 +60,13 @@ function createDeleteButton() {
     deleteBtnWrapper.classList = 'deleteBtnWrapper';
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
+    deleteButton.onclick = deleteNote;
     deleteBtnWrapper.appendChild(deleteButton)
     return deleteBtnWrapper;
 }
 
 function deleteNote(element) {
-    if (element.target.classList.contains('delete')) {
         element.target.closest('.note').remove();
-    }
-}
-
-function removeText() {
-    if (getTextInput != '') {
-        setTextInput();
-    }
 }
 
 //Start functions to get date and time.
