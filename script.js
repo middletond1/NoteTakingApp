@@ -1,16 +1,25 @@
 initializeNoteApp()
 
 function initializeNoteApp() {
+    initSubmitButton();
+    initTextInputField();
+}
+
+function initTextInputField() {
     const textInputArea = document.getElementById('text-input');
-    const submitButton = document.getElementById('submit-button');
-    submitButton.addEventListener('click', appendNote);
     textInputArea.addEventListener('keydown', function(event) {
         if(event.code === 'enter') {
             event.preventDefault();
-            appendNote();
+            appendNoteToDom();
             removeText();
         }
     })
+}
+
+function initSubmitButton() {
+    document
+        .getElementById('submit-button')
+        .addEventListener('click', appendNoteToDom);
 }
 
 function getTextInput() {
@@ -21,7 +30,7 @@ function setTextInput() {
     document.getElementById('text-input').value = '';
 }
 
-function appendNote() {
+function appendNoteToDom() {
     const noteArea = document.getElementById('note-area');
     if (getTextInput() === '') {
         alert(`Please enter text.`)
