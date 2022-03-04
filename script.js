@@ -55,7 +55,7 @@ function createNotePieces() {
 }
 
 function createNoteText() {
-    const noteTextDiv = document.createElement('div');
+    const noteTextDiv = document.createElement('p');
     noteTextDiv.classList.add('note-text')
     noteTextDiv.appendChild(document.createTextNode(getTextInput()));
     return noteTextDiv;
@@ -71,7 +71,7 @@ function wrapDeleteButton(deleteBtn) {
 function createDeleteButton() {
     const deleteButton = document.createElement('button');
     deleteButton.classList = 'delete';
-    deleteButton.onclick = () => element.target.closest('.note').remove();;
+    deleteButton.onclick = (event) => event.target.closest('.note').remove();
     return wrapDeleteButton(deleteButton);
 }
 
@@ -142,5 +142,3 @@ function getYear() {
     return year;
 }
 //End functions to get date and time.
-
-document.getElementById('note-area').addEventListener('click', deleteNote);
